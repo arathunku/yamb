@@ -1,0 +1,13 @@
+Persona
+
+<% if current_user %>
+  <button id="personaLogout">Sign out with Persona!</button>
+  <%= persona_signout_on_element("personaLogout") %>
+<% else %>
+  <button id="personaLogin">Sign in with Persona!</button>
+  <%= persona_signin_on_element("personaLogin") %>
+<% end %>
+
+
+<%= link_to "settings", settings_path, 'data-no-turbolink'=> true %>
+<%= persona_handle_callbacks login: login_url, logout: logout_url, logged_in: settings_url, logged_out: root_url %>

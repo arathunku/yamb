@@ -1,0 +1,8 @@
+<%= current_user.email %>
+
+<button id="optout">optout</button>
+<%= persona_signout_on_element('optout') %>
+
+<%= persona_handle_callbacks login: login_url, logout: logout_url, logged_in: settings_url, logged_out: root_url %>
+
+<%= link_to "root", root_path, 'data-no-turbolink'=> true  %>

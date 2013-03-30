@@ -3,4 +3,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Yambc::Application.load_tasks
+Yamb::Application.load_tasks

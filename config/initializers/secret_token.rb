@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Yambc::Application.config.secret_key_base = 'e85509284923e5b7b9850eef9e435fe0c3176631caccef21ddc82a8b0573e30aa624bb3226ed6cbd1cc11c2b066309dcb86dbe36e5f8d73a4960a32c38fb44bf'
+Yamb::Application.config.secret_key_base = 'e85509284923e5b7b9850eef9e435fe0c3176631caccef21ddc82a8b0573e30aa624bb3226ed6cbd1cc11c2b066309dcb86dbe36e5f8d73a4960a32c38fb44bf'

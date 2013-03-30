@@ -11,9 +11,20 @@ gem 'jquery-rails', github: 'rails/jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.0.1'
 
-gem 'debugger', group: [:development, :test]
-
 
 group :development, :test do
+  gem 'debugger'
   gem 'rspec-rails'
+  gem 'guard'
+  gem 'guard-spork'
+  gem 'guard-rspec'
+  gem 'spork'
+  gem 'spork-rails', git: 'git://github.com/koriroys/spork-rails.git'
+end
+
+group :test do
+  gem 'factory_girl_rails'
+  gem 'capybara'
+  gem 'libnotify'
+  gem 'rb-inotify', :require => false
 end
