@@ -3,5 +3,8 @@ class SettingsController < ApplicationController
   def index
   end
 
-
+  def username
+    current_user.change_username(params[:username])
+    render nothing: true
+  end
 end

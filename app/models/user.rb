@@ -8,6 +8,12 @@ class User < ActiveRecord::Base
   validates :username, uniqueness: { case_sensitive: false },
                        length: {minimum: 3, maximum: 128}
   
+
+
+  def change_username(username)
+    self.update_attributes(username: username)
+  end
+
   private
     def create_remember_token
       self.remember_token = SecureRandom.urlsafe_base64

@@ -14,4 +14,13 @@ describe SettingsController do
     }
     it { response.should redirect_to(root_path) }
   end
+
+  it "update username" do
+    user = FactoryGirl.create(:user)
+    sign_in(user)
+    new_username = "ijsaijdsaad"
+    put 'username', username: new_username
+    user = User.find(user.id)
+    user.username.should eq(new_username)
+  end
 end
