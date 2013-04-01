@@ -1,6 +1,7 @@
 class AuthorizationsController < ApplicationController
 
   def login
+    #oh god, that method needs refactoring.
     if params[:assertion].nil?
       head :bad_request
       flash[:warning] = "Assertion is nil, everything is ok?"
@@ -9,7 +10,12 @@ class AuthorizationsController < ApplicationController
       if json_from_persona['status'] == "okay"
         flash[:success] = "Successfully authorized"
         email = json_from_persona["email"]
-        @user = User.find_or_initialize_by(email: email)
+        @user = User.find_by(email: email)
+        if @user 
+          sign_in @user
+          redirect_to settings_path and return
+        end
+        @user = User.new(email: email)
         if @user.save
           sign_in @user
         else

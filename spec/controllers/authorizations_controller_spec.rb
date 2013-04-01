@@ -30,7 +30,15 @@ describe AuthorizationsController do
       end
     end
   end
-
+  describe "should redirect to settings" do
+    before(:each) {
+      FactoryGirl.build(:user).save
+    }
+    it do
+      post 'login', assertion: {email: "example@example.com"}
+      response.should redirect_to(settings_url)
+    end
+  end
   describe "logout" do
     before(:each) {
       post 'logout'
