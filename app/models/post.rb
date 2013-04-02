@@ -11,16 +11,23 @@
 #  created_at :datetime
 #  updated_at :datetime
 #
+class CaseInsensitiveHash < Hash
+  def [](key)
+    super(key.to_s.downcase)
+  end
+end
 class MetadataParseError < RuntimeError; end
-class Post < ActiveRecord::Base
-  attr_accessor :metadata
-  belongs_to :user
-  before :parse_content
 
-  before_validate :fill_excerpt
-  before_validate :fill_status
-  before_validate :fill_title
-  before_validate :fill_content
+class Post < ActiveRecord::Base
+  belongs_to :user
+
+  before_validation :parse_content
+
+  before_validation :fill_excerpt
+  before_validation :fill_status
+  before_validation :fill_title
+  before_validation :fill_content
+  before_validation :fill_metadata
 
   validates :excerpt, presence: true
   validates :status, presence: true,
@@ -28,46 +35,54 @@ class Post < ActiveRecord::Base
   validates :content, presence: true
   validates :title, presence: true,
                     length: {maximum: 255}
+  validates :metadata, presence: true
 
   #TODO:
   # * add publish_at field and sort by that
-  default_scope order('created_at desc')
+  default_scope { order('created_at desc')}
 
-  def metadata(key)
-    @metadata[key]
+  def metadata_key(key)
+    unless @metadata_hash
+      @metadata_hash = parse_metadata(self.metadata)
+    end
+    @metadata_hash[key]
   end
 
   private
     def fill_excerpt
-      self.excerpt = metadata('excerpt') || self.content.gsub('\n', "\n")
+      self.excerpt = metadata_key('excerpt') || self.content.gsub('\n', "\n")
     end
 
     def fill_status
-      self.status = metadata('status') || "public"
+      self.status = metadata_key('status') || "public"
     end
 
     def fill_title
-      self.title = metadata('title')
+      self.title = metadata_key('title') || "no title"
     end
 
     def fill_content
       self.content = @body || "nothing."
     end
 
+    def fill_metadata
+      self.metadata = @first_paragraph || "Status: draft"
+    end
+
     def parse_content
-      first_paragraph, @body = self.content.split(/\r?\n\r?\n/, 2)
-      @metadata = parse_metadata(first_paragraph)
+      @first_paragraph, @body = self.content.split(/\r?\n\r?\n/, 2)
+      @metadata_hash = parse_metadata(@first_paragraph)
     end
 
     def parse_metadata(first_paragraph)
       is_metadata = first_paragraph.split("\n").first =~ /^[\w ]+:/
       raise MetadataParseError unless is_metadata
-      metadata = CaseInsensitiveHash.new
+      hash = CaseInsensitiveHash.new
       first_paragraph.split("\n").each do |line|
         key, value = line.split(/\s*:\s*/, 2)
         next if value.nil?
-        metadata[key.downcase] = value.chomp
+        hash[key.downcase] = value.chomp
       end
-      metadata
+      hash
     end
 end

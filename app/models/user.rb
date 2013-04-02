@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
   before_save { |user| user.email.downcase! }
   before_validation :create_username
 
-  has_many :posts
+  has_many :posts, dependent: :destroy
 
   validates :email, presence:   true,
                     uniqueness: { case_sensitive: false }
