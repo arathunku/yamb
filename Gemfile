@@ -14,6 +14,7 @@ gem 'jbuilder', '~> 1.0.1'
 
 group :development, :test do
   gem 'debugger'
+  gem 'annotate', ">=2.5.0"
   gem 'rspec-rails'
   gem 'guard'
   gem 'guard-spork'
