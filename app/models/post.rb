@@ -10,6 +10,21 @@
 #  status     :string(255)
 #  created_at :datetime
 #  updated_at :datetime
+#  metadata   :text
+#
+
+# == Schema Information
+#
+# Table name: posts
+#
+#  id         :integer          not null, primary key
+#  user_id    :integer
+#  content    :text(4294967295)
+#  excerpt    :text
+#  title      :string(255)
+#  status     :string(255)
+#  created_at :datetime
+#  updated_at :datetime
 #
 class CaseInsensitiveHash < Hash
   def [](key)

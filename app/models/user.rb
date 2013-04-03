@@ -8,24 +8,23 @@
 #  remember_token :string(255)
 #  created_at     :datetime
 #  updated_at     :datetime
+#  bio            :text
+#  fullname       :string(255)
 #
 
 class User < ActiveRecord::Base
   before_save :create_remember_token
   before_save { |user| user.email.downcase! }
-  before_validation :create_username
+  before_create :create_username
 
   has_many :posts, dependent: :destroy
 
   validates :email, presence:   true,
                     uniqueness: { case_sensitive: false }
   validates :username, uniqueness: { case_sensitive: false },
-                       length: {minimum: 3, maximum: 128}
-  
-
-
+                       length: {maximum: 128}
   def change_username(username)
-    self.update_attributes(username: username)
+    self.update_attributes(username: username) if username
   end
 
   private
@@ -34,6 +33,9 @@ class User < ActiveRecord::Base
     end
 
     def create_username
-      self.username ||= self.email.split("@")[0]
+      debugger
+      if self.username.nil? || self.username.empty?
+        self.username = id
+      end
     end
 end

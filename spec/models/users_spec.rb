@@ -13,27 +13,31 @@ describe User do
   end
 
   describe "should REJECT" do
-    it "username too short" do
-      FactoryGirl.build(:user, username: "ex").should_not be_valid
-    end
     it "username too long" do
       FactoryGirl.build(:user, username: "a"*129).should_not be_valid
     end
   end
 
+  it "default username" do
+    #debugger
+    user = FactoryGirl.create(:user)
+    user.username.should eq(user.id)
+  end
+
   describe "change_username" do
-    it "shouldn't do anything for nil" do
+    it "for nil don't change anything" do
       user = FactoryGirl.build(:user)
       old_username = user.username
       new_username = nil
       user.change_username(new_username)
       user.username.should eq(old_username)
     end
-    it "should change username" do
+    it "change username" do
       user = FactoryGirl.build(:user)
       new_username = "xxxx"
       user.change_username(new_username)
       user.username.should eq(new_username)
     end
   end
+
 end

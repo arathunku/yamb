@@ -14,13 +14,14 @@ gem 'jbuilder', '~> 1.0.1'
 
 group :development, :test do
   gem 'debugger'
+  gem 'metric_fu'
   gem 'annotate', ">=2.5.0"
   gem 'rspec-rails'
   gem 'guard'
   gem 'guard-spork'
   gem 'guard-rspec'
   gem 'spork'
-  gem 'spork-rails', git: 'git://github.com/koriroys/spork-rails.git'
+  gem 'spork-rails', git: 'git@github.com:arathunku/spork-rails.git'
 end
 
 group :test do

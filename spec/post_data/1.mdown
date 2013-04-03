@@ -1,0 +1,7 @@
+Title: Nesta - CMS
+Excerpt: Udało się w końcu podłączyć i ustawić bloga.
+Tags: one one, two, three
+
+Woohoo!
+
+Kod od strony, wyglądu dostępny tu: [github](https://github.com/arathunku/arathunku.com) wszystko działa na darmowej instancji Heroku i ładuje się 10.5x szybciej od wordpress'a który wcale dużo więcej rzeczy nie ma wejściu. 
