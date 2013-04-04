@@ -1,0 +1,9 @@
+<div class="login-logout">
+  <% unless current_user %>
+    <a href class="persona" id="personaLogin" >Persona login</a>
+    <%= persona_signin_on_element("personaLogin") %>
+  <% end %>
+</div>
+
+<%= persona_handle_callbacks login: login_url, logout: logout_url, logged_in: settings_url, logged_out: root_url %>
+<%= include_persona_javascript %>

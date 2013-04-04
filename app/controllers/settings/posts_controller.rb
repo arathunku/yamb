@@ -1,6 +1,4 @@
-class PostsController < ApplicationController
-  before_filter :someone_logged_in?
-
+class Settings::PostsController < Settings::SettingsController
   def show
     @posts = current_user.post.all
   end

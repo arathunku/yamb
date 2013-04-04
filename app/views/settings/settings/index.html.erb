@@ -1,0 +1,9 @@
+<div class="information">
+  <%= current_user.email %>
+</div>
+<a href class="persona" id="personaLogout">Logout</a>
+<a href class="persona" id="output">Delete account</a>
+<%= persona_signout_on_element("personaLogout") %>
+<%= persona_signout_on_element("output") %>
+<%= include_persona_javascript %>
+<%= persona_handle_callbacks login: login_url, logout: logout_url, logged_in: settings_url, logged_out: root_url %>

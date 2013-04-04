@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe SettingsController do
+describe Settings::SettingsController do
   describe "show if logged in" do
     before(:each) {
       log_in

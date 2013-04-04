@@ -5,27 +5,21 @@ module PersonacodeHelper
 
   def persona_signin_on_element(elem)
     "<script type=\"text/javascript\">
-       var signinLink = document.getElementById('#{elem}');
-       if (signinLink) {
-        signinLink.onclick = function() { navigator.id.request(); };
-       };
+        $('##{elem}').bind('click', function() { navigator.id.request(); });
      </script>
     ".html_safe
   end
 
   def persona_signout_on_element(elem)
     "<script type=\"text/javascript\">
-      var signoutLink = document.getElementById('#{elem}');
-      if (signoutLink) {
-        signoutLink.onclick = function() { navigator.id.logout(); };
-      };
+        $('##{elem}').bind('click', function() { navigator.id.logout(); });
     </script>
     ".html_safe
   end
-
+#document.addEventListener('page:receive', function)
   def persona_handle_callbacks(params)
     "<script type=\"text/javascript\">
-      $(document).ready(function() {
+    $(document).ready(function() {
       navigator.id.watch({
       loggedInUser: #{current_user ? "'"+current_user.email+"'" : "null" },
       onlogin: function(assertion) {
@@ -45,6 +39,7 @@ module PersonacodeHelper
           error: function(res, status, xhr) { alert(\"logout failure\" + res); }
         });
       }
-    });});</script>".html_safe
+    });});
+    </script>".html_safe
   end
 end

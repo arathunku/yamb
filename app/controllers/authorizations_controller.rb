@@ -13,11 +13,18 @@ class AuthorizationsController < ApplicationController
         @user = User.find_by(email: email)
         if @user 
           sign_in @user
-          redirect_to settings_path and return
+          respond_to do |format|
+            format.json   { render :json => {:status => 'ok' } }
+          end
+          return
         end
         @user = User.new(email: email)
         if @user.save
           sign_in @user
+          respond_to do |format|
+            format.json   { render :json => {:status => 'ok' } }
+          end
+          return
         else
           flash[:error] = @user.errors.full_messages
           redirect_to root_path
@@ -29,9 +36,15 @@ class AuthorizationsController < ApplicationController
     end
   end
 
+
+  #logout is called without javascript. 
+  #Turbolinks -> problem with binding after loading partial
   def logout
     sign_out
     flash[:notice] = "Logged out successfuly"
+    respond_to do |format|
+      format.json   { render :json => {:status => 'ok' } }
+    end
   end
 
   def optout

@@ -6,14 +6,17 @@ Yamb::Application.routes.draw do
   post   '/auth/optout' => 'authorizations#optout', as: "optout"
 
 
-  get    'settings'           => 'settings#index'
-  put    'settings/username'  => 'settings#username'
 
   #posts
-  get    'settings/posts/'    => 'posts#index'
-  post   'settings/posts/new' => 'posts#create'
-  get    'settings/posts/:id' => 'posts#edit'
-  put    'settings/posts/:id' => 'posts#update'
-  delete 'settings/posts/:id' => 'posts#destroy'
+  namespace :settings do
+    get    '/'           => 'settings#index'
+    put    '/username'  => 'settings#username'
+    resources :posts
+  end
+  # get    'settings/posts/'    => 'posts#index'
+  # post   'settings/posts/new' => 'posts#create'
+  # get    'settings/posts/:id/edit' => 'posts#edit', as: 'settings_posts_edit'
+  # put    'settings/posts/:id' => 'posts#update'
+  # delete 'settings/posts/:id' => 'posts#destroy'
 
 end

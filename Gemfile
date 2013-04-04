@@ -9,13 +9,15 @@ gem 'uglifier', '>= 1.0.3'
 gem 'coffee-rails', '~> 4.0.0.beta1'
 gem 'jquery-rails', github: 'rails/jquery-rails'
 gem 'turbolinks'
+gem 'jquery-turbolinks'
 gem 'jbuilder', '~> 1.0.1'
-
+gem 'slim-rails'
+gem 'mustache'
 
 group :development, :test do
   gem 'debugger'
   gem 'metric_fu'
-  gem 'annotate', ">=2.5.0"
+  gem 'annotate', '>=2.5.0'
   gem 'rspec-rails'
   gem 'guard'
   gem 'guard-spork'

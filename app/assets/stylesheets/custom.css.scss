@@ -1,0 +1,54 @@
+a {
+  text-decoration: none;
+}
+
+.main-container {
+  width: 80%;
+  height: 100%;
+  margin: auto;
+}
+
+.header {
+  height: 20px;
+  text-align: left;
+  margin-bottom: 2em;
+  li {
+    float: left;
+    margin: 0 2em 0 2em;
+    list-style-type: none;
+  }
+}
+
+.container {}
+
+.login-logout {
+  width: 200px;
+  display: inline;
+  float: right;
+}
+
+.persona {
+  background-color: #624e43 !important;
+  color: #D3D2D2;
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.7);
+  -webkit-box-shadow: 0 0 0;
+  box-shadow: 0 0 0;
+  border-radius: 5px;
+  font-size: 12px;
+  padding: 3px 10px;
+  border-width: 0;
+  font-weight: 500;
+  font-family: "Lato", sans;
+  text-transform: uppercase;
+  background-image: none;
+}
+
+.information {
+  display: block;
+  clear: both;
+  margin-bottom: 5em;
+  float: right;
+}
+.optout {
+  display: block;
+}

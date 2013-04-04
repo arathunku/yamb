@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe PostsController do
+describe Settings::PostsController do
 
   describe "index" do
     pending "show return varible with all posts"

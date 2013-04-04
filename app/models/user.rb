@@ -33,7 +33,7 @@ class User < ActiveRecord::Base
     end
 
     def create_username
-      debugger
+      #debugger
       if self.username.nil? || self.username.empty?
         self.username = id
       end
