@@ -1,1 +1,4 @@
-(Y)ey (A)nother (M)arkdown (B)log
+(Y)et (A)nother (M)arkdown (B)log
+
+
+Not liking that scriptogr.am have not been updated in like 6 months, based on changelog. I'd like to make my own, the goal is to make it even better. The time of development is kind of execiting because ruby 2.0 and rails 4.0 are out so I'm using edge builds here.
