@@ -19,8 +19,7 @@ describe AuthorizationsController do
         post 'login', assertion: {email: "example@example.com"}
       }
       it do
-        response.should be_success
-        
+        response.should redirect_to(settings_url)
       end
       it "and flash success" do
         flash[:success].should_not be_nil
@@ -55,7 +54,7 @@ describe AuthorizationsController do
     before(:each) {
       log_in
     }
-    it "should work correctly" do
+    it "user correctly" do
       expect { post 'optout'}.to change(User, :count).by(-1)
     end
   end

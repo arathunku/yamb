@@ -14,7 +14,8 @@ class AuthorizationsController < ApplicationController
         if @user 
           sign_in @user
           respond_to do |format|
-            format.json   { render :json => {:status => 'ok' } }
+            format.html { redirect_to settings_path }
+            format.json { render :json => {:status => 'ok' } }
           end
           return
         end
@@ -22,6 +23,7 @@ class AuthorizationsController < ApplicationController
         if @user.save
           sign_in @user
           respond_to do |format|
+            format.html { redirect_to settings_path }
             format.json   { render :json => {:status => 'ok' } }
           end
           return
@@ -43,6 +45,7 @@ class AuthorizationsController < ApplicationController
     sign_out
     flash[:notice] = "Logged out successfuly"
     respond_to do |format|
+      format.html { redirect_to root_path }
       format.json   { render :json => {:status => 'ok' } }
     end
   end

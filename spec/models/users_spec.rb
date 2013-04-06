@@ -19,9 +19,9 @@ describe User do
   end
 
   it "default username" do
-    #debugger
     user = FactoryGirl.create(:user)
-    user.username.should eq(user.id)
+    user.send(:create_username)
+    user.username.should eq(user.id.to_s)
   end
 
   describe "change_username" do
