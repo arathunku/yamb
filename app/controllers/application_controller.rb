@@ -5,4 +5,5 @@ class ApplicationController < ActionController::Base
   include AuthorizationsHelper
   include PersonacodeHelper
   include SettingsHelper
+  include MarkdownHelper
 end

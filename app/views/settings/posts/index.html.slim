@@ -6,7 +6,9 @@
         br
         span.excerpt = p.excerpt
         br
-        span.content = p.content
+        = markdown(p.content).html_safe
+        br
+        span.link = link_to "edit", edit_settings_post_path(p)
         br
         span
           '--------------------------------------------------

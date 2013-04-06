@@ -5,8 +5,8 @@ class Settings::PostsController < Settings::SettingsController
   end
   
   def new
-    @post = Post.new
-
+    value = "Title: \nExcerpt: \n\n\n"
+    @post = Post.new(content: value)
   end
 
   def create
@@ -22,13 +22,14 @@ class Settings::PostsController < Settings::SettingsController
   
   def edit
     @post = Post.find(params[:id])
+    @post.content = @post.merge_content
   end
 
   def update
     @post = Post.find(params[:id])
 
     respond_to do |format|
-      if @post.update_attributes(content: params[:post])
+      if @post.update_attributes(content: params[:post][:content])
         format.html { redirect_to edit_settings_post_path(@post)}
       else
         format.html { render :action => 'edit'}

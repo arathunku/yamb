@@ -1,8 +1,4 @@
-= form_for @post, url: settings_posts_path do |f|
+= form_for @post, url: url_to do |f|
   .new-post-form
-    = f.text_area :content, size:"20x20" , value: "Title: Naaaaaaaaaaesta - CMS\n\
-                                        Excerpt: USTAWIEaaassaNIA.\n\
-                                        Tags: one one, two, three\n\
-                                        \n\
-                                        Contenidsiajdiadsadsasadsfdsfdsfdsfsdf\n" 
+    = f.text_area :content, size:"100x20"
     = f.submit

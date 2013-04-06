@@ -38,10 +38,10 @@ class Post < ActiveRecord::Base
 
   before_validation :parse_content
 
-  before_validation :fill_excerpt
   before_validation :fill_status
   before_validation :fill_title
   before_validation :fill_content
+  before_validation :fill_excerpt
   before_validation :fill_metadata
 
   validates :excerpt, presence: true
@@ -63,13 +63,18 @@ class Post < ActiveRecord::Base
     @metadata_hash[key]
   end
 
+  def merge_content
+    [self.metadata, 
+     "", self.content].join("\n")
+  end
   private
     def fill_excerpt
-      self.excerpt = metadata_key('excerpt') || self.content.gsub('\n', "\n")
+      debugger
+      self.excerpt = metadata_key('excerpt') || @body.gsub('\n', "\n")
     end
 
     def fill_status
-      self.status = metadata_key('status') || "public"
+      self.status = metadata_key('status') || "draft"
     end
 
     def fill_title

@@ -13,7 +13,7 @@ gem 'jquery-turbolinks'
 gem 'jbuilder', '~> 1.0.1'
 gem 'slim-rails'
 gem 'mustache'
-
+gem 'redcarpet'
 
 group :development, :test do
   gem 'debugger'
