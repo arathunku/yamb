@@ -20,6 +20,7 @@ class AuthorizationsController < ApplicationController
           return
         end
         @user = User.new(email: email)
+          #debugger
         if @user.save
           sign_in @user
           respond_to do |format|

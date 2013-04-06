@@ -15,7 +15,7 @@
 class User < ActiveRecord::Base
   before_save :create_remember_token
   before_save { |user| user.email.downcase! }
-  after_commit :create_username
+  after_create :create_username
 
   has_many :posts, dependent: :destroy
 

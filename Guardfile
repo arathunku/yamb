@@ -19,15 +19,15 @@ guard 'rspec',:all_after_pass => false, :cli => '--drb' do
      "spec/#{m[2]}s/#{m[1]}_#{m[2]}_spec.rb",
      "spec/acceptance/#{m[1]}_spec.rb",
      (m[1][/_pages/] ? "spec/requests/#{m[1]}_spec.rb" : 
-                       "spec/requests/#{m[1].singularize}_pages_spec.rb")]
+                       "spec/requests/#{m[1]}_pages_spec.rb")]
   end
   watch(%r{^app/views/(.+)/}) do |m|
     (m[1][/_pages/] ? "spec/requests/#{m[1]}_spec.rb" : 
-                       "spec/requests/#{m[1].singularize}_pages_spec.rb")
+                       "spec/requests/#{m[1]}_pages_spec.rb")
   end
 
   # Capybara features specs
-  watch(%r{^app/views/(.+)/.*\.(erb|haml)$})          { |m| "spec/features/#{m[1]}_spec.rb" }
+  watch(%r{^app/views/(.+)/.*\.(erb|haml|slim)$})          { |m| "spec/features/" }
 
   # Turnip features and steps
   watch(%r{^spec/acceptance/(.+)\.feature$})

@@ -1,14 +1,22 @@
 class Settings::PostsController < Settings::SettingsController
-  def show
-    @posts = current_user.post.all
+
+  def index
+    @posts = current_user.posts.load || []
   end
   
+  def new
+    @post = Post.new
+
+  end
+
   def create
-    @post = Post.new(params[:post])
-    if @post.save
-
-    else
-
+    @post = current_user.posts.new(content: params[:post][:content])
+    respond_to do |format|
+      if @post.save
+        format.html { redirect_to edit_settings_post_path(@post) }
+      else
+        format.html { render :action => 'new' }
+      end
     end
   end
   
@@ -17,13 +25,19 @@ class Settings::PostsController < Settings::SettingsController
   end
 
   def update
-    #update
     @post = Post.find(params[:id])
-    #errors handle
-    @post.update_attributes(params[:post])
+
+    respond_to do |format|
+      if @post.update_attributes(content: params[:post])
+        format.html { redirect_to edit_settings_post_path(@post)}
+      else
+        format.html { render :action => 'edit'}
+      end
+    end
   end
 
   def destroy
-    Posts.find(params[:id]).destroy
+    Post.find(params[:id]).destroy
+    redirect_to settings_posts_path
   end
 end
