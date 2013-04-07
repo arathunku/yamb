@@ -12,4 +12,15 @@ class Settings::SettingsController < ApplicationController
       format.js { render js: "window.location = '#{settings_path}'"}
     end
   end
+
+  def html
+    @html = current_user.design
+  end
+
+  def html_update
+    design = current_user.design
+    design.update_code(:html, params[:design][:html])
+    redirect_to settings_html_path
+  end
+
 end

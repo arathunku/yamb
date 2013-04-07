@@ -11,7 +11,12 @@ Yamb::Application.routes.draw do
     get    '/'           => 'settings#index'
     patch  '/username'   => 'settings#username'
     resources :posts
+
+    #html&&css
+    get '/html' => 'settings#html'
+    patch '/html' => 'settings#html_update'
   end
+
 
 
 end

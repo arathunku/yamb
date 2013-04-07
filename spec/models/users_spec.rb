@@ -32,8 +32,8 @@ describe User do
       user.change_username(new_username)
       user.username.should eq(old_username)
     end
-    it "change username" do
-      user = FactoryGirl.build(:user)
+    it "correct value" do
+      user = FactoryGirl.create(:user)
       new_username = "xxxx"
       user.change_username(new_username)
       user.username.should eq(new_username)

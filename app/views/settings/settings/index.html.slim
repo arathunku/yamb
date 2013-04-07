@@ -1,6 +1,8 @@
 = form_for @user, url: settings_username_path, remote: true do |f|
   = f.text_field :username
   = f.submit
+= link_to "HTML edit", settings_html_path
+
 
 .information
   = current_user.email
