@@ -9,7 +9,7 @@ Yamb::Application.routes.draw do
 
   namespace :settings do
     get    '/'           => 'settings#index'
-    put    '/username'  => 'settings#username'
+    patch  '/username'   => 'settings#username'
     resources :posts
   end
 

@@ -15,10 +15,10 @@ describe Post do
       post.title.should eq("Nesta - CMS")
     end
 
-    it "status public if not specified" do
+    it "status draft if not specified" do
       post = FactoryGirl.create(:post, user: @user)
       post = Post.find(post.id)
-      post.status.should eq("public")
+      post.status.should eq("draft")
     end
 
     it "parse metadata correctly" do

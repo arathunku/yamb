@@ -55,12 +55,12 @@ describe Settings::PostsController do
       }
       it do
         put :update, id: @post.id,
-          post: File.read('spec/post_data/1.mdown')
+          post: { content: File.read('spec/post_data/1.mdown')}
         response.should redirect_to("/settings/posts/#{@post.id}/edit")
       end
       it "title of a post" do
         put :update, id: @post.id, 
-          post: File.read('spec/post_data/1_title.mdown')
+          post: { content: File.read('spec/post_data/1_title.mdown') }
         post = Post.find(@post.id)
         post.title.should_not eq(@post.title)
       end

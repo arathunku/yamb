@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
                        length: {maximum: 128}
 
   def change_username(username)
-    self.update_attributes(username: username) if username
+      self.update_column(:username, username)
   end
 
   private

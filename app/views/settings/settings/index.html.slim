@@ -1,0 +1,12 @@
+= form_for @user, url: settings_username_path, remote: true do |f|
+  = f.text_field :username
+  = f.submit
+
+.information
+  = current_user.email
+  br
+  = current_user.username
+a#personaLogout.persona Persona Logout
+= persona_signout_on_element("personaLogout")
+= include_persona_javascript
+= persona_handle_callbacks login: login_url, logout: logout_url, logged_in: settings_url, logged_out: root_url 

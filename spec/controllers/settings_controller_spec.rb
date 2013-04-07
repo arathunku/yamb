@@ -19,7 +19,7 @@ describe Settings::SettingsController do
     user = FactoryGirl.create(:user)
     sign_in(user)
     new_username = "ijsaijdsaad"
-    put 'username', username: new_username
+    put 'username', user: { username: new_username }
     user = User.find(user.id)
     user.username.should eq(new_username)
   end

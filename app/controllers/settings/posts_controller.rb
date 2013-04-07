@@ -5,7 +5,7 @@ class Settings::PostsController < Settings::SettingsController
   end
   
   def new
-    value = "Title: \nExcerpt: \n\n\n"
+    value = "Title: \nStatus: public\nExcerpt: \n\n\n"
     @post = Post.new(content: value)
   end
 
