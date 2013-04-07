@@ -6,4 +6,10 @@ class ApplicationController < ActionController::Base
   include PersonacodeHelper
   include SettingsHelper
   include MarkdownHelper
+
+
+  def render_404
+    raise ActionController::RoutingError.new('Nie ma takiej strony.')
+  end
+
 end

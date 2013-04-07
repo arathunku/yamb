@@ -23,4 +23,14 @@ class Settings::SettingsController < ApplicationController
     redirect_to settings_html_path
   end
 
+  def css
+    @css = current_user.design
+  end
+
+  def css_update
+    design = current_user.design
+    design.update_code(:css, params[:design][:css])
+    redirect_to settings_css_path
+  end
+
 end

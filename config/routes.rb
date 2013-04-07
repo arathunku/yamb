@@ -15,8 +15,10 @@ Yamb::Application.routes.draw do
     #html&&css
     get '/html' => 'settings#html'
     patch '/html' => 'settings#html_update'
+    get '/css' => 'settings#css'
+    patch '/css' => 'settings#css_update'
   end
 
-
+  get ':username', to: 'pages#view', as: :post
 
 end
