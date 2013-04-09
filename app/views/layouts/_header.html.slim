@@ -1,14 +1,23 @@
-.header
+.menu
   ul
     li
-      = link_to "Home", root_path, 'data-no-turbolink'=> true
-    li
-      = link_to "Settings", settings_path, 'data-no-turbolink'=> true
-  -if current_user
-    li
-      = link_to "New Post", new_settings_post_path
-    li
-      = link_to "All Posts", settings_posts_path
-    li
-     = link_to "Show", post_path(current_user.username), \
-      'data-no-turbolink'=> true
+      = link_to "Home", root_path, 'data-no-turbolink'=> true, \
+        class: is_active("home")
+    - if current_user
+      li
+        = link_to "Settings", settings_path, 'data-no-turbolink'=> true,\
+          class: is_active("settings")
+      li
+        = link_to "New Post", new_settings_post_path, \
+          class: is_active("aa")
+      li
+        = link_to "All Posts", settings_posts_path, \
+          class: is_active("aa")
+      li
+       = link_to "Show", post_path(current_user.username), \
+        'data-no-turbolink'=> true, class: is_active("aa")
+    - else
+      li 
+        = render 'layouts/persona'
+        = persona_signout_on_element("personaLogin")
+        = persona_handle_callbacks login: login_url, logout: logout_url, logged_in: settings_url, logged_out: root_url 
