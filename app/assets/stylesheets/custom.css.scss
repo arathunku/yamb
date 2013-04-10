@@ -1,6 +1,8 @@
 .main-container {
   text-align: left;
   font-family: 'Proxima Nova Regular', Helvetica, Arial, Helvetica, sans-serif;
+  color: #333333;
+  font-size: 16px;
 }
 
 a {
@@ -51,7 +53,7 @@ a {
   float: right;
 }
 
-persona {
+.personaButton {
   background-color: #624e43 !important;
   color: #D3D2D2;
   text-shadow: 1px 1px 1px rgba(0,0,0,0.7);
@@ -64,10 +66,13 @@ persona {
   font-weight: 500;
   text-transform: uppercase;
   background-image: none;
-  margin: 10em;
-
 }
-
+.settings {
+  a {
+    margin-right: 2em;
+    margin-bottom: 2em;
+  }
+}
 .information {
   display: block;
   clear: both;
@@ -76,4 +81,23 @@ persona {
 }
 .optout {
   display: block;
+}
+
+form {
+
+}
+.control-group {
+  display: block;
+  height: 2em;
+  margin-bottom: 0.5em;
+  label {
+    display: block;
+    float: left;
+    width: 5em;
+    line-height: 35px;
+  }
+  input {
+    border: 1px solid #cccccc;
+    line-height: 25px;
+  }
 }

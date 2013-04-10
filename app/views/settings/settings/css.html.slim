@@ -1,3 +1,9 @@
+= content_for :codemirror do
+  = javascript_include_tag "html+css", "data-turbolinks-track" => true
+  = stylesheet_link_tag    "codemirror", media: "all", \
+    "data-turbolinks-track" => true 
 = form_for @css, url: settings_css_path do |f|
   = f.text_area :css, size:"50x20"
   = f.submit
+== "<script>var myCodeMirror = CodeMirror.fromTextArea(document\
+    .getElementById(\"design_css\"));</script>"

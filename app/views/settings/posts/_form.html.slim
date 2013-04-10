@@ -1,4 +1,10 @@
+= content_for :codemirror do
+  = javascript_include_tag "markdown+codemirror", "data-turbolinks-track" => true
+  = stylesheet_link_tag    "codemirror", media: "all", \
+    "data-turbolinks-track" => true 
 = form_for @post, url: url_to do |f|
   .new-post-form
-    = f.text_area :content, size:"100x20"
+    = f.text_area :content, size:"100x20", id: "edit_post"
     = f.submit
+== "<script>var myCodeMirror = CodeMirror.fromTextArea(document\
+    .getElementById(\"edit_post\"));</script>"

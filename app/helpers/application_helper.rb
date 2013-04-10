@@ -1,6 +1,10 @@
 module ApplicationHelper
-  def is_active(action)
-    params[:action] == action ? "active" : nil
+  def is_active(controller, action)
+    if params[:controller] == controller && params[:action] == action
+      "active"
+    else
+      nil
+    end
   end
 
 end

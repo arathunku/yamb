@@ -1,15 +1,26 @@
-= form_for @user, url: settings_username_path, remote: true do |f|
-  = f.text_field :username
-  = f.submit
-= link_to "HTML edit", settings_html_path
-= link_to "CSS edit", settings_css_path
+.settings
+  = link_to "HTML edit", settings_html_path
+  = link_to "CSS edit", settings_css_path
+
+  = form_for @user, url: settings_username_path, remote: true do |f|
+    .control-group
+      = f.label "Username", class: "control-label"
+      = f.text_field :username
+    .control-group
+      = f.label "Full name"
+      = f.text_field :fullname
+    .control-group
+      = f.label "Biography"
+      = f.text_field :bio
+    = f.submit
 
 
-.information
-  = current_user.email
-  br
-  = current_user.username
-a#personaLogout.persona Persona Logout
-= persona_signout_on_element("personaLogout")
-= include_persona_javascript
-= persona_handle_callbacks login: login_url, logout: logout_url, logged_in: settings_url, logged_out: root_url 
+  .information
+    = current_user.email
+    br
+    = current_user.username
+    br
+    a#personaLogout.personaButton Persona Logout
+  = persona_signout_on_element("personaLogout")
+  = include_persona_javascript
+  = persona_handle_callbacks login: login_url, logout: logout_url, logged_in: settings_url, logged_out: root_url 
