@@ -1,21 +1,3 @@
-.menu
-  ul
-    li
-      = link_to "Home", root_path, 'data-no-turbolink'=> true, \
-        class: is_active("pages", "home")
-    - if current_user
-      li
-        = link_to "Settings", settings_path, 'data-no-turbolink'=> true,\
-          class: is_active("settings/settings", "index")
-      li
-        = link_to "New Post", new_settings_post_path, \
-          class: is_active("settings/posts", "new")
-      li
-        = link_to "All Posts", settings_posts_path, \
-          class: is_active("settings/posts", "index")
-      li
-       = link_to "Show", post_path(current_user.username), \
-        'data-no-turbolink'=> true
-    - else
-      li 
-        = render 'layouts/persona'
+.header
+  span
+    = yield(:header)

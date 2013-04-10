@@ -3,7 +3,7 @@ module ApplicationHelper
     if params[:controller] == controller && params[:action] == action
       "active"
     else
-      nil
+      "inactive"
     end
   end
 

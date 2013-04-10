@@ -5,6 +5,9 @@
 = form_for @post, url: url_to do |f|
   .new-post-form
     = f.text_area :content, size:"100x20", id: "edit_post"
-    = f.submit
+    .menu-bar
+      = f.submit "Submit", class: "btn"
 == "<script>var myCodeMirror = CodeMirror.fromTextArea(document\
-    .getElementById(\"edit_post\"));</script>"
+    .getElementById(\"edit_post\"), {\
+      autofocus:true\
+    });</script>"

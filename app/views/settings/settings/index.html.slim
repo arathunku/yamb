@@ -1,3 +1,5 @@
+= content_for :header do
+  = "Basic settings"
 .settings
   = link_to "HTML edit", settings_html_path
   = link_to "CSS edit", settings_css_path
@@ -12,7 +14,7 @@
     .control-group
       = f.label "Biography"
       = f.text_field :bio
-    = f.submit
+    = f.submit "Submit", class: "btn"
 
 
   .information
