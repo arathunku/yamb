@@ -1,18 +1,12 @@
 = content_for :header do
   = "All posts"
-#posts
+ul#posts
   - @posts.each do |p|
-      .post
-        span.title = p.title
-        br
-        span.excerpt = p.excerpt
-        br
-        '= markdown(p.content).html_safe
-        br
-        span.link = link_to "edit", edit_settings_post_path(p)
-        ________
-        span.link = link_to "delete", settings_post_path(p), method: :delete
-        br
-        span
-          '--------------------------------------------------
-        br
+      li.post
+        div.options
+          span.date = p.created_at
+          span.link = link_to "edit", edit_settings_post_path(p)
+          span.link = link_to "delete", settings_post_path(p), method: :delete
+        div.title 
+          = link_to p.title, get_post_path(current_user.username, p.id)
+        div.excerpt = p.excerpt

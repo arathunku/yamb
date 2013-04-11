@@ -1,8 +1,9 @@
 = content_for :header do
   = "Basic settings"
 .settings
-  = link_to "HTML edit", settings_html_path
-  = link_to "CSS edit", settings_css_path
+  .edit-settings
+    = link_to "HTML edit", settings_html_path
+    = link_to "CSS edit", settings_css_path
 
   = form_for @user, url: settings_username_path, remote: true do |f|
     .control-group
@@ -13,16 +14,14 @@
       = f.text_field :fullname
     .control-group
       = f.label "Biography"
-      = f.text_field :bio
-    = f.submit "Submit", class: "btn"
+      = f.text_area :bio, size: "40x4"
+    = f.submit "Submit", class: "btn submit"
 
 
   .information
-    = current_user.email
-    br
-    = current_user.username
-    br
-    a#personaLogout.personaButton Persona Logout
+    span.email = current_user.email
+    span.logout
+      a#personaLogout.personaButton Persona Logout
   = persona_signout_on_element("personaLogout")
   = include_persona_javascript
   = persona_handle_callbacks login: login_url, logout: logout_url, logged_in: settings_url, logged_out: root_url 

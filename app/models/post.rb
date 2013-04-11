@@ -69,7 +69,7 @@ class Post < ActiveRecord::Base
   end
   private
     def fill_excerpt
-      self.excerpt = metadata_key('excerpt') || @body.gsub('\n', "\n")
+      self.excerpt = metadata_key('excerpt') || @body.split("\n")[0]
     end
 
     def fill_status

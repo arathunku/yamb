@@ -20,5 +20,6 @@ Yamb::Application.routes.draw do
   end
 
   get ':username', to: 'pages#view', as: :post
+  get ':username/:id', to: 'pages#show', as: :get_post
 
 end

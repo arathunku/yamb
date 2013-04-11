@@ -6,8 +6,9 @@
   .new-post-form
     = f.text_area :content, size:"100x20", id: "edit_post"
     .menu-bar
-      = f.submit "Submit", class: "btn"
+      = f.submit "Update", class: "btn"
 == "<script>var myCodeMirror = CodeMirror.fromTextArea(document\
     .getElementById(\"edit_post\"), {\
-      autofocus:true\
+      autofocus:true,\
+      lineWrapping: true\
     });</script>"
